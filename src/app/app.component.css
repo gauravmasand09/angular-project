@@ -1,0 +1,29 @@
+
+ body {
+    margin: 0;
+}
+
+main {
+    margin: 30px;
+}
+
+.menu-button {
+    background: #039be5;
+    color: white;
+    border: none;
+    cursor:pointer;
+    outline:none;
+}
+
+
+.spinner-container {
+  width: 100%;
+  margin-top: 100px;
+}
+
+.mat-list-base {
+    padding-top: 0px !important;
+}
+  
+
+

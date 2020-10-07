@@ -1,0 +1,27 @@
+image: teracy/angular-cli
+
+pipelines:
+  branches:
+     angular-project:
+        - step:
+            caches:
+              - node
+            script:
+              - npm install
+              - ng build
+              - ls -lah dist
+              - ls -lah node_modules
+              - pipe: atlassian/rsync-deploy:0.4.3
+                variables:
+                   USER: 'root'
+                   SERVER: '139.59.13.163'
+                   REMOTE_PATH: '/var/www/html/'
+                   LOCAL_PATH: 'dist/'
+              - pipe: atlassian/ssh-run:0.2.6
+                variables:
+                  SSH_USER: 'root'
+                  SERVER: '139.59.13.163'
+                  COMMAND: '/etc/init.d/apache2 restart'
+                  
+            artifacts:
+              - dist/**

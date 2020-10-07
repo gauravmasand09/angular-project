@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+@import "~@angular/material/theming";
+
+// Include non-theme styles for core.
+@include mat-core();
+
+$mat-custom-theme: (
+  50: #0041c9,
+  100: #039be5,
+  200: #0041c9,
+  300: #039be5,
+  400: #039be5,
+  500: #039be5,
+  600: #039be5,
+  700: #039be5,
+  800: #039be5,
+  900: #039be5,
+  A100: #039be5,
+  A200: #039be5,
+  A400: #039be5,
+  A700: #039be5,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+
+// Define a theme.
+$primary: mat-palette($mat-custom-theme);
+$accent:  mat-palette($mat-pink, A200, A100, A400);
+
+$theme: mat-light-theme($primary, $accent);
+
+// Include all theme styles for the components.
+@include angular-material-theme($theme);
+
+
+.spinner-container {
+  position: fixed;
+  height: 300px;
+  width: 345px;
+  display: flex;
+  background: white;
+  margin-top: 70px;
+  z-index: 1;
+  opacity: 0.5;
+  justify-content: center;
+}

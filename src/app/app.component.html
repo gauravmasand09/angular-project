@@ -1,0 +1,96 @@
+<mat-sidenav-container fullscreen>
+
+    <mat-sidenav #start>
+        <mat-nav-list class="pt-0" (click)="start.close()">
+            <a mat-list-item routerLink="/login" style="height: 64px;background: lightblue;">
+                <img style="margin-right: 0.5em;" width="30px" height="30px" src="../assets/badge.svg" />
+                <span >Angular </span>
+            </a>
+            <a mat-list-item routerLink="/courses">
+                <mat-icon>library_books</mat-icon>
+                <span style="margin-left: 0.5em;">Courses</span>
+            </a>
+
+            <a mat-list-item routerLink="/login" *ngIf="isLoggedOut$ | async">
+                <mat-icon>account_circle</mat-icon>
+                <span style="margin-left: 0.5em;">Login</span>
+            </a>
+
+            <a mat-list-item  (click)="logout()" *ngIf="isLoggedIn$ | async">
+                <mat-icon>exit_to_app</mat-icon>
+                <span style="margin-left: 0.5em;">Logout</span>
+            </a>
+
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-toolbar color="primary">
+        <button class="menu-button" mat-icon-button (click)="start.open('mouse')">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar>
+
+  <div class="spinner-container" *ngIf="loading">
+
+    <mat-spinner></mat-spinner>
+
+  </div>
+
+    <router-outlet></router-outlet>
+
+</mat-sidenav-container>
+
+<!-- <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="over" [(opened)]="opened" (opened)="events.push('open!')"
+                 (closed)="events.push('close!')"  style="background-color:wheat">
+  
+                 <mat-toolbar-row (click)="toggleMenu()">
+     <mat-icon (click)="toggleMenu()">menu</mat-icon> Company Name
+    </mat-toolbar-row>
+      <mat-toolbar>  
+    <mat-toolbar-row (click)="toggleMenu()">
+     <mat-icon>home</mat-icon> Forms
+    </mat-toolbar-row>
+  
+    <mat-toolbar-row (click)="toggleMenu()">
+      <mat-icon>person</mat-icon> Users
+    </mat-toolbar-row>
+  
+      <mat-toolbar-row (click)="toggleMenu()">
+      <mat-icon>dashboard</mat-icon> Dashboard
+    </mat-toolbar-row>
+  
+      <mat-toolbar-row (click)="toggleMenu()">
+      <mat-icon>settings</mat-icon> Settings
+    </mat-toolbar-row>
+  
+  </mat-toolbar>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+       <mat-toolbar style="background-color:wheat"> 
+    
+   <mat-icon (click)="toggleMenu()">menu</mat-icon>
+        Company Name
+      </mat-toolbar>
+  
+      <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        The <em>best</em> pasta
+      </ng-template>
+      <h1>Best pasta restaurants</h1>
+      <p>...</p>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>thumb_down</mat-icon> The worst sushi
+      </ng-template>
+      <h1>Terrible sushi restaurants</h1>
+      <p>...</p>
+    </mat-tab>
+  </mat-tab-group>
+  
+    </mat-sidenav-content>
+</mat-sidenav-container> -->
